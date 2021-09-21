@@ -1,0 +1,14 @@
+<% content_for :header_links do %>
+    <a href="/applications/new">New Application</a>
+<% end %>
+
+<ul>
+  <% @categories.each do |category| %>
+    <li>
+      <a href="/applications/<%= category %>">
+        <%= category.capitalize %>
+        <%= app_category(category).count %>
+      </a>
+    </li>
+  <% end %>
+</ul>

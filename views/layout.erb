@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Job App Status</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans">
+    <!--<link rel="stylesheet" href="/stylesheets/main.css">-->
+
+  </head>
+  <body>
+    <header>
+      <h1>Job Application Status</h1>
+      <div class="actions">
+        <%== yield_content :header_links %>
+      </div>
+    </header>
+    
+    <% if session[:message] %>
+        <div>
+            <p><%= session.delete(:message) %></p>
+        </div>
+    <% end %>
+
+    <main>
+      <%== yield %>
+    </main>
+  </body>
+</html>

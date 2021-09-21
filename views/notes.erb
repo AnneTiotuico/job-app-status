@@ -1,0 +1,9 @@
+<form action="/applications/<%= @app[:id] %>/notes" method="post">
+  <label for="notes">Notes for <%= @app[:position] %> at <%= @app[:company] %></label>
+  
+  <div>
+    <textarea id="notes" name="notes"><%= @app[:notes] %></textarea>
+  </div>
+  <button type="submit">Save Changes</button>
+  <a href="/applications/<%= @app[:status] %>">Cancel</a>
+</form> 

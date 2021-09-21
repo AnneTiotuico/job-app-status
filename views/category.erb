@@ -1,0 +1,45 @@
+<% content_for :header_links do %>
+    <a href="/applications">All Applications</a>
+<% end %>
+
+<section>
+ <table>
+   <h3><%= params[:category].capitalize %></h3>
+   <% unless @apps_by_category.empty? %>
+    <thead>
+     <tr>
+      <th>Date Applied</th>
+      <th>Company</th>
+      <th>Position</th>
+      <th>Job Description</th>
+      <th>Notes</th>
+     </tr>
+    </thead>
+    <tbody>
+     <% @apps_by_category.each do |app| %>
+      <tr>
+       <td><%= app[:date] %></td>
+       <td><%= app[:company] %></td>
+       <td><%= app[:position] %></td>
+       <% if app[:url].empty? %>
+         <td></td>
+       <% else %>
+         <td><a href="<%= app[:url] %>" target="_blank">Open</a></td>
+       <% end %>
+       <% if app[:notes].empty? %>
+         <td><a href="/applications/<%= app[:id] %>/notes">Add</a></td>
+       <% else %>
+         <td><a href="/applications/<%= app[:id] %>/notes">Open</a></td>
+       <% end %>
+       <td><a href="/applications/<%= app[:id] %>/edit">Edit Details</a></td>
+       <td>
+         <form class="delete" action="/applications/<%= app[:id] %>/delete" method="post">
+            <button type="submit" class="delete">Delete</button>
+         </form>
+        </td>
+      </tr>
+     <% end %>
+    </tbody>
+   <% end %>
+ </table>
+</section>

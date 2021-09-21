@@ -1,0 +1,37 @@
+<h3>Editing your <%= @app[:company] %> Application:</h3>
+<form action="/applications/<%= @app[:id] %>/edit" method="post">
+  <fieldset>
+    <div>
+    <label for="date-applied">Date Applied:</label>
+    <input type="date" id="date-applied" name="date-applied" value="<%= @app[:date] %>">
+    </div>
+    
+    <div>
+      <label for="company">Company:</label>
+      <input type="text" id="company" name="company" value="<%= @app[:company] %>">
+    </div>
+    
+    <div>
+      <label for="position">Position:</label>
+      <input type="text" id="position" name="position" value="<%= @app[:position] %>">
+    </div>
+    
+    <div>
+      <label for="url">Link to Job Description:</label>
+      <input type="url" id="url" name="url" placeholder="https://example.com" value="<%= @app[:url] %>">
+    </div>
+    
+    <div>
+      <label for="status">Status:</label>
+      <select id="status" name="status" > 
+        <option value="applied" <%= selected_status(@app, "applied") %>>Applied</option>
+        <option value="interviewing" <%= selected_status(@app, "interviewing") %>>Interviewing</option>
+        <option value="offered" <%= selected_status(@app, "offered") %>>Offered</option>
+        <option value="no" <%= selected_status(@app, "no") %>>No</option>
+      </select>
+    </div>
+    
+    <button type="submit">Save Changes</button>
+    <a href="/applications">Cancel</a>
+  </fieldset>
+</form>
